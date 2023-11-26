@@ -47,6 +47,7 @@ const AuthController = () => {
           <input
             type="password"
             value={password}
+            className="auth-input"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
