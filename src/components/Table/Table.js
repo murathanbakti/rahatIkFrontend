@@ -99,7 +99,7 @@ const Table = () => {
                 mainAcountNumber: formData.mainAcountNumber,
                 firstChildAcountNumber: formData.firstChildAcountNumber,
                 secondChildAcountNumber: formData.secondChildAcountNumber,
-                debt: formData.debt,
+                debt: parseFloat(formData.debt),
             });
 
             setUpdateData(!updateData);
