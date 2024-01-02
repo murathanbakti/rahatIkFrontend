@@ -1,28 +1,6 @@
-# Rahat IK - Frontend
+# Rahat IK - Fullstack Application
 
-## Overview
-
-This repository contains the frontend part of the fullstack React + Express.js project named "Rahat IK." 
-The purpose of the project is to define an account number and maintain debt information in a tabular form. The account number follows the format of three digits, a dot, two digits, another dot, and finally, four digits. When a user adds a debt, the details are listed in the table. The first three digits of the account number are determined, and clicking the "+" button to the left brings up account numbers in the format of three digits, a dot, and two digits. Clicking the "+" next to these numbers displays the debts of these subgroups, with the system aggregating debts from the smallest inclusive subsets to the larger ones.
-
-## Dependencies
-
-The project uses the following dependencies:
-
-```json
-"dependencies": {
-  "@testing-library/jest-dom": "^5.17.0",
-  "@testing-library/react": "^13.4.0",
-  "@testing-library/user-event": "^13.5.0",
-  "axios": "^1.6.2",
-  "cra-template": "1.2.0",
-  "react": "^18.2.0",
-  "react-dom": "^18.2.0",
-  "react-router-dom": "^6.20.0",
-  "react-scripts": "5.0.1",
-  "web-vitals": "^2.1.4"
-}
-```
+This repository contains the fullstack React + Express.js project named "Rahat IK." The project aims to manage debt information associated with account numbers. The frontend is deployed on Vercel, and the backend is deployed on Render.com.
 
 ## Live Demo
 
@@ -39,7 +17,9 @@ Upon visiting the website, the first page you encounter is the login page. Use t
 - **Username:** testapi
 - **Password:** test123
 
+
 ## Installation
+### Frontend
 
 To run the project locally, follow these steps:
 
@@ -62,6 +42,123 @@ To run the project locally, follow these steps:
    ```bash
    npm start
 
+### Backend 
+ To run the backend locally, follow these steps:
 
-## Deployment
-The frontend is deployed using Vercel. For deployment, follow the instructions provided by Vercel and connect your repository.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/rahat-ik-backend.git
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd rahat-ik-backend
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+The backend dependencies include:
+```json
+"dependencies": {
+  "bcrypt": "^5.1.1",
+  "body-parser": "^1.20.2",
+  "cors": "^2.8.5",
+  "dotenv": "^16.3.1",
+  "express": "^4.18.2",
+  "express-session": "^1.17.3",
+  "jsonwebtoken": "^9.0.2",
+  "mongoose": "^8.0.1",
+  "nodemon": "^3.0.1"
+}
+```
+
+4. Start the development server:
+
+   ```bash
+   npm start
+
+## Authentication Controllers
+
+This section outlines the authentication controllers responsible for user registration and login in the backend of "Rahat IK."
+
+### Register
+
+**Endpoint:** `/api/auth/register`
+
+Register a new user.
+
+- **Method:** `POST`
+- **Request Body:**
+
+```json
+{
+  "username": "example_user",
+  "password": "example_password"
+}
+```
+- Response
+```json
+{
+  "message": "User registered successfully"
+}
+```
+### Login
+
+**Endpoint:** `/api/auth/login`
+
+Authenticate and log in a user.
+
+- **Method:** `POST`
+- **Request Body:**
+
+```json
+{
+  "username": "example_user",
+  "password": "example_password"
+}
+```
+- Success Response 
+
+```json
+{
+  "response": {
+    "token": "example_token"
+    // Additional user-related information if needed
+  },
+  "messages": [
+    {
+      "code": "0",
+      "message": "OK"
+    }
+  ]
+}
+```
+- Error Response 
+
+1. Invalid Username or Password:
+
+```json
+{
+  "response": null,
+  "messages": [
+    {
+      "code": "1",
+      "message": "Invalid username or password"
+    }
+  ]
+}
+```
+2. Internal Server Error:
+```json 
+{
+  "response": null,
+  "messages": [
+    {
+      "code": "1",
+      "message": "Internal Server Error"
+    }
+  ]
+}
+
+```
